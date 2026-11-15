@@ -1,0 +1,6 @@
+{
+  "name": "FarmOrbit",
+  "description": "Smart Farming. Smarter Future. Helping farmers in Haldia, Tamluk, and Purba Medinipur understand weather, rainfall, soil moisture, crop conditions, and crop rotation options using real NASA satellite data in Hindi, English, and Bengali.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

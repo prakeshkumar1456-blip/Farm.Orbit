@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', 'Noto Sans Devanagari', 'Noto Sans Bengali', sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Bengali', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #f6faf6;
+    color: #102617;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Leaflet map container overrides to ensure crisp rendering */
+.leaflet-container {
+  font-family: var(--font-body);
+  position: relative;
+  z-index: 1;
+}
+
+.farmorbit-map-drawing .leaflet-container,
+.farmorbit-map-drawing .leaflet-grab,
+.farmorbit-map-drawing .leaflet-interactive {
+  cursor: crosshair !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
