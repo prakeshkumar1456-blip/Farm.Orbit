@@ -1,3 +1,4 @@
+import heroImage from '../assets/images/hero_bengal_farmland_1794649965184.jpg';
 import {
   ArrowRight,
   Bell,
@@ -11,6 +12,7 @@ import {
   Sprout,
   ThermometerSun,
 } from 'lucide-react';
+
 import { useState } from 'react';
 import { TARGET_REGIONS } from '../data/agronomy';
 import type { NavTab, Translations } from '../i18n/translations';
@@ -86,6 +88,10 @@ export function HomeView({
       : null;
   const smVolumetric = overview?.openMeteo.soilMoisture0to1cm ?? null;
 
+  // Fallback hero image used when a project asset is not supplied.
+  const heroImage =
+    'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80';
+
   const explainPrompt = (topic: 'weather' | 'rainfall' | 'soil' | 'vegetation') => {
     if (language === 'hi') {
       if (topic === 'weather') return `${selectedLabel} के लिए अभी का तापमान और मौसम मेरी फसल के लिए कैसा है?`;
@@ -147,7 +153,7 @@ export function HomeView({
 
           <div className="lg:col-span-5 relative min-h-[260px] lg:min-h-full bg-[#E8F2E8]">
             <img
-              src="/src/assets/images/hero_bengal_farmland_1794649965184.jpg"
+              src={heroImage}
               alt={t.regionFooter}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover lg:absolute lg:inset-0"
@@ -189,11 +195,10 @@ export function HomeView({
                   key={region.id}
                   type="button"
                   onClick={() => onSelectLocation(regionName(region), region.lat, region.lon, null)}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-semibold border transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
-                    isSelected
+                  className={`px-4 py-2.5 rounded-lg text-sm font-semibold border transition-colors cursor-pointer whitespace-nowrap shrink-0 ${isSelected
                       ? 'bg-[#15803D] text-white border-[#15803D]'
                       : 'bg-white text-[#1D3924] border-[#CADACA] hover:bg-[#ECF5EC]'
-                  }`}
+                    }`}
                 >
                   {regionName(region)}
                 </button>
@@ -207,11 +212,10 @@ export function HomeView({
                   key={farm.id}
                   type="button"
                   onClick={() => onSelectLocation(farm.name, farm.latitude, farm.longitude, farm.id)}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-semibold border transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
-                    isSelected
+                  className={`px-4 py-2.5 rounded-lg text-sm font-semibold border transition-colors cursor-pointer whitespace-nowrap shrink-0 ${isSelected
                       ? 'bg-[#15803D] text-white border-[#15803D]'
                       : 'bg-white text-[#1D3924] border-[#CADACA] hover:bg-[#ECF5EC]'
-                  }`}
+                    }`}
                 >
                   {farm.name} ({farm.cropName})
                 </button>
